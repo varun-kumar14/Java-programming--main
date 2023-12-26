@@ -1,0 +1,48 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class OddEvenSeparator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get array size from user
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+
+        // Get array elements from user
+        int[] inputArray = new int[size];
+        System.out.println("Enter the array elements:");
+        for (int i = 0; i < size; i++) {
+            inputArray[i] = scanner.nextInt();
+        }
+
+        // Separate odd and even elements
+        int[] oddArray = new int[size];
+        int[] evenArray = new int[size];
+
+        int oddIndex = 0;
+        int evenIndex = 0;
+
+        for (int num : inputArray) {
+            if (num % 2 == 0) {
+                evenArray[evenIndex++] = num;
+            } else {
+                oddArray[oddIndex++] = num;
+            }
+        }
+
+        // Trim the arrays to remove unused space
+        oddArray = trimArray(oddArray, oddIndex);
+        evenArray = trimArray(evenArray, evenIndex);
+
+        // Print the output
+        System.out.println("Odd Elements: " + Arrays.toString(Arrays.copyOf(oddArray, oddIndex)));
+        System.out.println("Even Elements: " + Arrays.toString(Arrays.copyOf(evenArray, evenIndex)));
+
+        scanner.close();
+    }
+
+    private static int[] trimArray(int[] array, int size) {
+        return Arrays.copyOf(array, size);
+    }
+}
