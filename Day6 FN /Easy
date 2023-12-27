@@ -1,28 +1,35 @@
-def product_except_self(nums):
-    n = len(nums)
-    
-    # Initialize prefix and suffix arrays
-    prefix_products = [1] * n
-    suffix_products = [1] * n
-    
-    # Compute prefix products
-    prefix_product = 1
-    for i in range(n):
-        prefix_products[i] = prefix_product
-        prefix_product *= nums[i]
-    
-    # Compute suffix products
-    suffix_product = 1
-    for i in range(n - 1, -1, -1):
-        suffix_products[i] = suffix_product
-        suffix_product *= nums[i]
-    
-    # Compute the final result
-    result = [prefix_products[i] * suffix_products[i] for i in range(n)]
-    
-    return result
+public class ProductExceptSelf {
 
-# Example usage:
-input_array = [1, 2, 3, 4]
-output_array = product_except_self(input_array)
-print(output_array)
+    public static int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+
+        // Initialize result array
+        int[] result = new int[n];
+
+        // Compute left products
+        int leftProduct = 1;
+        for (int i = 0; i < n; i++) {
+            result[i] = leftProduct;
+            leftProduct *= nums[i];
+        }
+
+        // Compute right products and update the result
+        int rightProduct = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            result[i] *= rightProduct;
+            rightProduct *= nums[i];
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] inputArray = {1, 2, 3, 4};
+        int[] outputArray = productExceptSelf(inputArray);
+
+        // Print the result
+        for (int num : outputArray) {
+            System.out.print(num + " ");
+        }
+    }
+}
