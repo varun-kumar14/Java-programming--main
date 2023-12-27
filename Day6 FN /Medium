@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Permutations {
+
+    public static List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(nums, 0, result);
+        return result;
+    }
+
+    private static void backtrack(int[] nums, int start, List<List<Integer>> result) {
+        if (start == nums.length) {
+            List<Integer> permutation = new ArrayList<>();
+            for (int num : nums) {
+                permutation.add(num);
+            }
+            result.add(permutation);
+            return;
+        }
+
+        for (int i = start; i < nums.length; i++) {
+            // Swap elements to explore different permutations
+            int temp = nums[start];
+            nums[start] = nums[i];
+            nums[i] = temp;
+
+            backtrack(nums, start + 1, result);
+
+            // Backtrack by restoring the original order
+            temp = nums[start];
+            nums[start] = nums[i];
+            nums[i] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] inputNums = {1, 4, 3};
+        List<List<Integer>> outputPermutations = permute(inputNums);
+
+        // Print the result
+        for (List<Integer> permutation : outputPermutations) {
+            System.out.println(permutation);
+        }
+    }
+}
