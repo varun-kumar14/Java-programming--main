@@ -1,0 +1,46 @@
+
+public class PalPrime {
+    int number;
+    String message;
+
+    public PalPrime(int number, String message) {
+        this.number = number;
+        this.message = message;
+        printMessage();
+    }
+
+    private void printMessage() {
+        System.out.println("Number " + number + " is " + message);
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {1, 34543, 565, 727, 10099};
+
+        for (int num : numbers) {
+            String message = getMessageForNumber(num);
+            new PalPrime(num, message);
+        }
+    }
+
+    private static String getMessageForNumber(int number) {
+        if (isPalindrome(number) && isPrime(number)) {
+            return "Prime/Palindrome/PalPrime";
+        } else if (isPalindrome(number)) {
+            return "Palindrome";
+        } else if (isPrime(number)) {
+            return "Prime";
+        } else {
+            return "Neither Prime nor Palindrome";
+        }
+    }
+
+    private static boolean isPalindrome(int number) {
+        // Implement palindrome check logic
+        // Return true if the number is a palindrome, false otherwise
+    }
+
+    private static boolean isPrime(int number) {
+        // Implement prime check logic
+        // Return true if the number is prime, false otherwise
+    }
+}
