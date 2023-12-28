@@ -1,0 +1,37 @@
+// 3. Rearrange Positive and Negative Numbers
+public class RearrangeArray {
+    public static void main(String[] args) {
+        int[] arr = {-12, 11, -13, -5, 6, -7, 5, -3, -6};
+        rearrangeArray(arr);
+
+        // Output
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void rearrangeArray(int[] arr) {
+        int n = arr.length;
+        int left = 0;
+        int right = n - 1;
+
+        while (left <= right) {
+            // Find the next negative number
+            while (left <= right && arr[left] < 0) {
+                left++;
+            }
+
+            // Find the next positive number
+            while (left <= right && arr[right] >= 0) {
+                right--;
+            }
+
+            // Swap the negative and positive numbers
+            if (left <= right) {
+                int temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            }
+        }
+    }
+}
