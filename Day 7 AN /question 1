@@ -1,0 +1,28 @@
+
+public class ConstructorsIllustration {
+
+    public ConstructorsIllustration() {
+        System.out.println("No arguments constructor");
+    }
+
+    // Default constructor
+    public ConstructorsIllustration(int defaultValue) {
+        System.out.println("Default constructor with value: " + defaultValue);
+    }
+
+    // Parameterized constructor (multiple constructors with different parameters)
+    public ConstructorsIllustration(String type) {
+        System.out.println("Parameterized constructor with type: " + type);
+    }
+
+    public ConstructorsIllustration(int value, String type) {
+        System.out.println("Parameterized constructor with value: " + value + " and type: " + type);
+    }
+
+    public static void main(String[] args) {
+        new ConstructorsIllustration(); // No arguments constructor
+        new ConstructorsIllustration(42); // Default constructor with value: 42
+        new ConstructorsIllustration("example"); // Parameterized constructor with type: example
+        new ConstructorsIllustration(123, "custom"); // Parameterized constructor with value: 123 and type: custom
+    }
+}
