@@ -1,0 +1,31 @@
+
+class BankAccount {
+    int accountId;
+    String name;
+    double balance;
+
+    public BankAccount(int id, String accountName, double initialBalance) {
+        accountId = id;
+        name = accountName;
+        balance = initialBalance;
+    }
+
+    public void transferTo(BankAccount recipient, double amount) {
+        balance -= amount;
+        recipient.balance += amount;
+    }
+
+    public void printReceipt() {
+        System.out.println("Account id: " + accountId + ",\nName: " + name + ",\nAccount Balance: Rs." + balance + "\n");
+    }
+}
+
+// Creating accounts and performing transactions
+BankAccount accountA = new BankAccount(12344, "Account A", 5000);
+BankAccount accountB = new BankAccount(56789, "Account B", 2500);
+
+accountA.transferTo(accountB, 1500);
+accountA.printReceipt(); // Receipt after transferring 1500 from A to B
+
+accountB.transferTo(accountA, 3000);
+accountB.printReceipt(); // Receipt after transferring 3000 from B to A
