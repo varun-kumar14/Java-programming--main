@@ -1,0 +1,56 @@
+// 3. Vehicle class hierarchy
+class Vehicle {
+    int speed;
+
+    public Vehicle(int speed) {
+        this.speed = speed;
+    }
+
+    public double calculateSpeed() {
+        return speed;
+    }
+}
+
+class Car extends Vehicle {
+    int numPassengers;
+
+    public Car(int speed, int numPassengers) {
+        super(speed);
+        this.numPassengers = numPassengers;
+    }
+
+    @Override
+    public double calculateSpeed() {
+        return super.calculateSpeed() * numPassengers;
+    }
+}
+
+class Motorcycle extends Vehicle {
+    int numWheels;
+
+    public Motorcycle(int speed, int numWheels) {
+        super(speed);
+        this.numWheels = numWheels;
+    }
+
+    @Override
+    public double calculateSpeed() {
+        return super.calculateSpeed() * numWheels;
+    }
+}
+
+// Usage
+public class VehicleTest {
+    public static void main(String[] args) {
+        Car car = new Car(60, 5);
+        Motorcycle motorcycle = new Motorcycle(80, 2);
+
+        // Printing details
+        System.out.println("Car Speed: " + car.calculateSpeed());
+        System.out.println("Motorcycle Speed: " + motorcycle.calculateSpeed());
+
+        // Determine the vehicle with the highest effective speed
+        String fastestVehicle = (car.calculateSpeed() > motorcycle.calculateSpeed()) ? "Car" : "Motorcycle";
+        System.out.println("The fastest vehicle is: " + fastestVehicle);
+    }
+}
