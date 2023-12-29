@@ -1,0 +1,33 @@
+// 2. Banking Application Class Hierarchy
+interface Account {
+    void deposit(double amount);
+    void withdraw(double amount);
+    double checkBalance();
+}
+
+class SavingsAccount implements Account {
+    // Implement methods for SavingsAccount
+}
+
+class CheckingAccount implements Account {
+    // Implement methods for CheckingAccount
+}
+
+class LoanAccount implements Account {
+    // Implement methods for LoanAccount
+}
+
+// Usage
+public class BankingApplication {
+    public static void main(String[] args) {
+        Account savingsAccount = new SavingsAccount();
+        Account checkingAccount = new CheckingAccount();
+        Account loanAccount = new LoanAccount();
+
+        // Perform banking operations
+        savingsAccount.deposit(1000);
+        checkingAccount.withdraw(500);
+        double loanBalance = loanAccount.checkBalance();
+        System.out.println("Loan Balance: " + loanBalance);
+    }
+}
