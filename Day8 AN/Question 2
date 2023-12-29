@@ -1,0 +1,62 @@
+// 2. Employee class hierarchy
+class Employee {
+    String name;
+    int employeeID;
+
+    public Employee(String name, int employeeID) {
+        this.name = name;
+        this.employeeID = employeeID;
+    }
+
+    public double calculateSalary() {
+        return 50000; // Base salary for all employees
+    }
+}
+
+class Manager extends Employee {
+    double bonusPercentage;
+
+    public Manager(String name, int employeeID, double bonusPercentage) {
+        super(name, employeeID);
+        this.bonusPercentage = bonusPercentage;
+    }
+
+    @Override
+    public double calculateSalary() {
+        return super.calculateSalary() * (1 + bonusPercentage / 100);
+    }
+}
+
+class Developer extends Employee {
+    String programmingLanguage;
+
+    public Developer(String name, int employeeID, String programmingLanguage) {
+        super(name, employeeID);
+        this.programmingLanguage = programmingLanguage;
+    }
+
+    @Override
+    public double calculateSalary() {
+        // Adding extra allowance for developers
+        return super.calculateSalary() + 10000;
+    }
+}
+
+// Usage
+public class EmployeeTest {
+    public static void main(String[] args) {
+        Manager manager = new Manager("Alice", 101, 15.0);
+        Developer developer = new Developer("Bob", 102, "Java");
+
+        // Printing details
+        System.out.println("Manager Details:");
+        System.out.println("Name: " + manager.name);
+        System.out.println("Employee ID: " + manager.employeeID);
+        System.out.println("Calculated Salary: " + manager.calculateSalary());
+
+        System.out.println("\nDeveloper Details:");
+        System.out.println("Name: " + developer.name);
+        System.out.println("Employee ID: " + developer.employeeID);
+        System.out.println("Calculated Salary: " + developer.calculateSalary());
+    }
+}
