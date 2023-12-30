@@ -1,0 +1,26 @@
+import java.io.File;
+import java.io.FilenameFilter;
+
+public class FileFilterExample {
+    public static void main(String[] args) {
+        String folderPath = "your_folder_path";
+        String extension = ".txt"; // Specify your desired extension
+
+        File folder = new File(folderPath);
+
+        if (folder.exists() && folder.isDirectory()) {
+            File[] filteredFiles = folder.listFiles(new FilenameFilter() {
+                public boolean accept(File dir, String name) {
+                    return name.endsWith(extension);
+                }
+            });
+
+            System.out.println("Files with extension " + extension + ":");
+            for (File file : filteredFiles) {
+                System.out.println(file.getName());
+            }
+        } else {
+            System.out.println("Invalid folder path.");
+        }
+    }
+}
