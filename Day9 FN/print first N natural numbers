@@ -1,0 +1,27 @@
+class PrintNumbers implements Runnable {
+    private int N;
+
+    public PrintNumbers(int n) {
+        N = n;
+    }
+
+    public void run() {
+        for (int i = 1; i <= N; i++) {
+            System.out.print(i + " ");
+        }
+    }
+}
+
+public class PrintNumbersMain {
+    public static void main(String[] args) {
+        int N = 10;
+
+        PrintNumbers printNumbers = new PrintNumbers(N);
+
+        Thread t1 = new Thread(printNumbers);
+        Thread t2 = new Thread(printNumbers);
+
+        t1.start();
+        t2.start();
+    }
+}
